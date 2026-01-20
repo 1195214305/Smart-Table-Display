@@ -37,7 +37,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({
   const [titleSaved, setTitleSaved] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number>()
-  const controlsTimeoutRef = useRef<NodeJS.Timeout>()
+  const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>()
   const titleInputRef = useRef<HTMLInputElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
 

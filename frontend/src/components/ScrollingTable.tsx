@@ -42,8 +42,8 @@ const ScrollingTable: React.FC<ScrollingTableProps> = ({
   const [titleSaved, setTitleSaved] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number>()
-  const [scrollPosition, setScrollPosition] = useState(0)
   const titleInputRef = useRef<HTMLInputElement>(null)
+  const [scrollPosition, setScrollPosition] = useState(0)
 
   // 预设颜色
   const backgroundPresets = [

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Settings, Brain, Save } from 'lucide-react'
 import ExcelImporter from '@/components/ExcelImporter'
 import ScrollingTable, { PlaybackSettings } from '@/components/ScrollingTable'
