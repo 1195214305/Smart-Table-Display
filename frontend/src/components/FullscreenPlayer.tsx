@@ -39,7 +39,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({
   const animationRef = useRef<number>()
   const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>()
   const titleInputRef = useRef<HTMLInputElement>(null)
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const scrollPositionRef = useRef(0)
 
   const backgroundPresets = [
     '#0a0a0a', '#1a1a1a', '#2a2a2a', '#1e293b', '#334155',
@@ -98,16 +98,14 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({
       const currentContainer = scrollContainerRef.current
       if (!currentContainer) return
 
-      setScrollPosition(prev => {
-        let newPosition = prev + speed
+      let newPosition = scrollPositionRef.current + speed
 
-        if (newPosition >= maxScroll + clientHeight) {
-          newPosition = -clientHeight
-        }
+      if (newPosition >= maxScroll + clientHeight) {
+        newPosition = -clientHeight
+      }
 
-        currentContainer.scrollTop = Math.max(0, newPosition)
-        return newPosition
-      })
+      currentContainer.scrollTop = Math.max(0, newPosition)
+      scrollPositionRef.current = newPosition
 
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -123,7 +121,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({
   }
 
   const resetScroll = () => {
-    setScrollPosition(0)
+    scrollPositionRef.current = 0
     const container = scrollContainerRef.current
     if (container) {
       container.scrollTop = 0
